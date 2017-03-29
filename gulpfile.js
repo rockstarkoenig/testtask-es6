@@ -17,7 +17,7 @@ gulp.task('build-sass', function (){
         .pipe(prefix(
             "last 1 version", "> 1%", "ie 8", "ie 7"
         ))
-        .pipe(gulp.dest('./src/css'))
+        .pipe(gulp.dest('./src/sass'))
         .pipe(minifycss())
         .pipe(gulp.dest('./build/css'));
 });
