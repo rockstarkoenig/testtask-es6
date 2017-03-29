@@ -109,10 +109,12 @@ export class Smile extends DisplayObject {
 
         this.mx = event.screenX - (parseInt(this.html.style.left) || 0);
         this.my = event.screenY - (parseInt(this.html.style.top) || 0);
+
+        event.preventDefault();
     }
 
     onMouseUp(event) {
-        if (!this.motion) {
+        if (!this.motion && this.dragOn) {
             this.switchColor();
         }
 
