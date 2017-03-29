@@ -132,7 +132,8 @@ function getNearestAvailablePointToInterval(p, a, b, radius, currentPosition) {
     }
 
     if (otherSides && hasIntersection) {
-        p = getPointFromRAC(getDistance(p, ip), getAngle(ip, p) + Math.PI, ip);
+        let sign = getSign(a, b, currentPosition);
+        p = getPointFromRAC(radius / 2, getAngle(a, b) + Math.PI / 2 * sign, ip);
     }
 
     return getNearestAvailablePointToPoint(p, ip, radius);

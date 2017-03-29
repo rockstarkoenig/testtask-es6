@@ -28,6 +28,9 @@ export class Smile extends DisplayObject {
             this.onMouseUp(event);
         };
 
+        this.appContainer.addEventListener("mouseleave", (event) => {
+            this.onMouseUp(event);
+        });
     }
 
     createHtml() {
