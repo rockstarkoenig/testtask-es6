@@ -1,0 +1,88 @@
+
+// Константы размеров
+$borberWidth: 2px;
+$faceSize: 150px;
+$eyeSizeRelative: 0.3;
+$eyesSpaceRelative: 0.1;
+
+// Расчет позиций глаз
+$eyeSize: $faceSize * $eyeSizeRelative;
+$eyesSpace: $faceSize * $eyesSpaceRelative;
+$eyeLeftX: $faceSize / 2 - $eyesSpace / 2 - $eyeSize;
+$eyeRightX: $faceSize / 2 + $eyesSpace / 2;
+
+// Константы appContainer
+$APP_WIDTH: 1100px;
+$APP_HEIGHT: 600px;
+$APP_COLOR: #f5f5f5;
+
+// Расчет размера коробки
+$boxSize: $faceSize * 1.2;
+
+@mixin smileBase() {
+  cursor: pointer;
+  position: relative;
+  background-color: #fc0;
+  border: $borberWidth solid #000;
+  width: $faceSize;
+  height: $faceSize;
+  border-radius: 100%;
+  margin: 0 auto;
+}
+
+@mixin smileEye($x) {
+  position: absolute;
+  width: $eyeSize;
+  height: $eyeSize;
+  left: $x;
+  top: $faceSize * 0.15;
+  border-radius: 100%;
+  background: #fff;
+}
+
+@mixin smileMouth() {
+  position: absolute;
+  left: $faceSize * 0.1;
+  height: $faceSize * 0.8;
+  width: $faceSize * 0.8;
+  border-bottom: 8px solid #000;
+  border-radius: 100%;
+}
+
+@mixin box($size, $color) {
+  position: relative;
+  width: $size;
+  height: $size;
+  background-color: $color;
+  border: $borberWidth solid #000;
+  top: $APP_HEIGHT - $size - $faceSize - $borberWidth * 4;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.smile-base {
+  @include smileBase();
+}
+
+.smile-eye-left {
+  @include smileEye($eyeLeftX);
+}
+
+.smile-eye-right {
+  @include smileEye($eyeRightX);
+}
+
+.smile-mouth {
+  @include smileMouth();
+}
+
+.box {
+  @include box($boxSize, #3af)
+}
+
+#appContainer {
+  width: $APP_WIDTH;
+  height: $APP_HEIGHT;
+  background-color: $APP_COLOR;
+  margin: 0 auto;
+}
